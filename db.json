@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Mobile",
+      "quantity": "2",
+      "place": "Mumbai",
+      "date": "13/1/21",
+      "amount": "80,000"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

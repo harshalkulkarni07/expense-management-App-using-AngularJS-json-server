@@ -1,0 +1,81 @@
+
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1 style="color: aliceblue;">Angular CRUD</h1>
+       <div class="d-flex">
+           <button type="button" (click)="clickAddexpense()" data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Add expense</button>
+       </div>
+    </div>
+  
+  </nav>
+  <table class="table mt-3">
+      <thead>
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">place</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let row of expenseData">
+              <td>{{row.id}}</td>
+              <td>{{row.name}}</td>
+              <td>{{row.quantity}}</td>
+              <td>{{row.place}}</td>
+              <td>{{row.date}}</td>
+              <td>{{row.amount}}</td>
+              <td>
+                  <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-info" (click)="onEdit(row)">Edit</button>
+                  <button class="btn btn-danger mx-3" (click)= " deleteexpenseData(row)">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" >expense Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="formValue">
+                  <div class="form-group"> 
+                      <label for="exampleInputPassword1">name</label>
+                      <input type="text" formControlName="name" class="form-control" id="exampleInputPassword1" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">quantity</label>
+                      <input type="text" formControlName="quantity" class="form-control" id="exampleInputPassword1" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">place</label>
+                      <input type="text" formControlName="place" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">date</label>
+                      <input type="text" formControlName="date" class="form-control" id="exampleInputPassword1" >
+                    </div>
+  
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">amount</label>
+                      <input type="text" formControlName="amount" class="form-control" id="exampleInputPassword1" >
+                    </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id ="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" *ngIf="showAdd" (click)="postexpenseDetails()" class="btn btn-primary">Add</button>
+            <button type="button" *ngIf="showUpdate"  (click)="updateexpenseDetails()" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
